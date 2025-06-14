@@ -75,7 +75,7 @@ struct EasyDefaults {
 /**
  A helper class for saving and retrieving values from UserDefaults with type inference and Codable support.
  */
-class EasyDefaultsWrapper {
+public class EasyDefaultsWrapper {
     private let defaults = UserDefaults.standard
 
     /**
@@ -86,7 +86,7 @@ class EasyDefaultsWrapper {
         - value: The value to save. Supported types: String, Int, Double, Bool, Data, or any Encodable object.
      - Throws: An error if the value is not supported or encoding fails.
      */
-    func save(key: String, _ value: Any) throws {
+    public func save(key: String, _ value: Any) throws {
         switch value {
         case let v as String:
             defaults.set(v, forKey: key)
@@ -115,7 +115,7 @@ class EasyDefaultsWrapper {
      - Returns: The value of type `T` if found, or `nil` if not found or decoding fails.
      - Throws: An error if decoding fails.
      */
-    func get<T: Decodable>(key: String) throws -> T? {
+    public func get<T: Decodable>(key: String) throws -> T? {
         if T.self == String.self {
             return defaults.string(forKey: key) as? T
         } else if T.self == Int.self {
