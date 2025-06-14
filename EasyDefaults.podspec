@@ -8,5 +8,5 @@ Pod::Spec.new do |spec|
   spec.author       = { "Júlio Andherson" => "julioandherson1@gmail.com" }
   spec.platform     = :ios, "15.6"
   spec.source       = { :git => "https://github.com/julioandherson/EasyDefaults.git", :tag => "#{spec.version}" }
-  spec.source_files = "*.swift"
+  spec.source_files = "Sources/*.{swift}"
 end
