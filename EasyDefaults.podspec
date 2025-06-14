@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
   spec.homepage     = "https://github.com/julioandherson/EasyDefaults"
   spec.license      = { :type => "MIT", :file => "LICENSE" }
   spec.author       = { "Júlio Andherson" => "julioandherson1@gmail.com" }
-  spec.platform     = :ios, "13.0"
+  spec.platform     = :ios, "15.6"
   spec.source       = { :git => "https://github.com/julioandherson/EasyDefaults.git", :tag => "#{spec.version}" }
   spec.source_files = "Sources/**/*.{swift}"
 end
