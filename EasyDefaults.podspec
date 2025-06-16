@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "EasyDefaults"
-  spec.version      = "0.0.1"
+  spec.version      = "1.0.0"
   spec.summary      = "A simplified access to UserDefaults, supporting type inference for common types and Codable objects."
   spec.description  = "EasyDefaults provides a property wrapper and helper for UserDefaults with type inference and Codable support."
   spec.homepage     = "https://github.com/julioandherson/EasyDefaults"
