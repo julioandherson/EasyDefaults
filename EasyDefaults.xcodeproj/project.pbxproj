@@ -26,9 +26,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		28C9C1302DF9205500E88144 /* EasyDefaults */ = {
+		28C9C1302DF9205500E88144 /* Sources */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = EasyDefaults;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		28C9C13D2DF9205500E88144 /* EasyDefaultsTests */ = {
@@ -60,7 +60,7 @@
 		28C9C1242DF9205500E88144 = {
 			isa = PBXGroup;
 			children = (
-				28C9C1302DF9205500E88144 /* EasyDefaults */,
+				28C9C1302DF9205500E88144 /* Sources */,
 				28C9C13D2DF9205500E88144 /* EasyDefaultsTests */,
 				28C9C12F2DF9205500E88144 /* Products */,
 			);
@@ -102,7 +102,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				28C9C1302DF9205500E88144 /* EasyDefaults */,
+				28C9C1302DF9205500E88144 /* Sources */,
 			);
 			name = EasyDefaults;
 			packageProductDependencies = (
@@ -356,6 +356,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -389,6 +390,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

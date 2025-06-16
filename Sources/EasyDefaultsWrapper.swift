@@ -8,13 +8,21 @@
 import Foundation
 
 /**
+ # EasyDefaults
+
  A property wrapper and helper class for simplified access to UserDefaults, supporting type inference for common types and Codable objects.
+
+ ## Overview
+
+ - `EasyDefaultsProperty` is a property wrapper that provides an instance of `EasyDefaultsWrapper`.
+ - `EasyDefaultsWrapper` handles saving and retrieving values from `UserDefaults` with type inference for native types and support for custom `Codable` objects.
+ - `AnyEncodable` is a type-erased wrapper to allow encoding of values of unknown concrete type.
 
  ## Usage
 
- Decorate a property with `@EasyDefaults` to access an instance of `EasyDefaultsWrapper`:
+ Decorate a property with `@EasyDefaultsProperty` to access an instance of `EasyDefaultsWrapper`:
 
-     @EasyDefaults
+     @EasyDefaultsProperty
      var easyDefaults: EasyDefaultsWrapper
 
  Save and retrieve values without specifying the type explicitly:
@@ -44,14 +52,12 @@ import Foundation
 
  ## Implementation Details
 
- - `EasyDefaults` is a property wrapper that provides an instance of `EasyDefaultsWrapper`.
- - `EasyDefaultsWrapper` handles saving and retrieving values from `UserDefaults`.
  - The `save` method uses type inference to store supported types directly, or encodes `Codable` objects as JSON.
  - The `get` method infers the type from the generic parameter and decodes data for custom types.
 
  ## Example
 
-     @EasyDefaults
+     @EasyDefaultsProperty
      var easyDefaults: EasyDefaultsWrapper
 
      struct User: Codable {
@@ -64,19 +70,25 @@ import Foundation
 
  */
 
+/// Property wrapper that provides an instance of EasyDefaultsWrapper for UserDefaults access.
 @propertyWrapper
-struct EasyDefaults {
-    /// Provides an instance of EasyDefaultsWrapper for UserDefaults access.
-    var wrappedValue: EasyDefaultsWrapper {
+public struct EasyDefaultsProperty {
+    /// Returns an instance of EasyDefaultsWrapper.
+    public var wrappedValue: EasyDefaultsWrapper {
         EasyDefaultsWrapper()
     }
+    /// Initializes the property wrapper.
+    public init() {}
 }
 
 /**
  A helper class for saving and retrieving values from UserDefaults with type inference and Codable support.
  */
-class EasyDefaultsWrapper {
+public class EasyDefaultsWrapper {
     private let defaults = UserDefaults.standard
+
+    /// Initializes the wrapper.
+    public init() {}
 
     /**
      Saves a value to UserDefaults for the given key.
@@ -86,7 +98,7 @@ class EasyDefaultsWrapper {
         - value: The value to save. Supported types: String, Int, Double, Bool, Data, or any Encodable object.
      - Throws: An error if the value is not supported or encoding fails.
      */
-    func save(key: String, _ value: Any) throws {
+    public func save(key: String, _ value: Any) throws {
         switch value {
         case let v as String:
             defaults.set(v, forKey: key)
@@ -115,7 +127,7 @@ class EasyDefaultsWrapper {
      - Returns: The value of type `T` if found, or `nil` if not found or decoding fails.
      - Throws: An error if decoding fails.
      */
-    func get<T: Decodable>(key: String) throws -> T? {
+    public func get<T: Decodable>(key: String) throws -> T? {
         if T.self == String.self {
             return defaults.string(forKey: key) as? T
         } else if T.self == Int.self {
@@ -137,14 +149,15 @@ class EasyDefaultsWrapper {
 /**
  A type-erased Encodable wrapper to allow encoding of values of unknown concrete type.
  */
-struct AnyEncodable: Encodable {
+public struct AnyEncodable: Encodable {
     private let encodeFunc: (Encoder) throws -> Void
 
-    init(_ encodable: Encodable) {
+    /// Initializes with any Encodable value.
+    public init(_ encodable: Encodable) {
         self.encodeFunc = encodable.encode
     }
 
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         try encodeFunc(encoder)
     }
 }
