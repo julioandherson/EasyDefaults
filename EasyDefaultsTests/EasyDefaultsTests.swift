@@ -9,7 +9,7 @@ import XCTest
 @testable import EasyDefaults
 
 final class EasyDefaultsTests: XCTestCase {
-    @EasyDefaults
+    @EasyDefaultsProperty
     var easyDefaults: EasyDefaultsWrapper
 
     var userObject: User!
