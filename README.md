@@ -20,7 +20,7 @@ EasyDefaults is a lightweight Swift library that simplifies access to `UserDefau
 Add the following line to your `Podfile`:
 
 ```
-pod 'EasyDefaults', :git => 'https://github.com/julioandherson/EasyDefaults.git'
+pod 'EasyDefaults', :git => 'https://github.com/julioandherson/EasyDefaults.git', :tag => '1.0.0'
 ```
 
 Then run:
